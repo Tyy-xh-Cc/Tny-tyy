@@ -1,0 +1,905 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.tyy.zxy.Mapper.FileRecordMapper">
+  <resultMap id="BaseResultMap" type="org.tyy.zxy.entity.FileRecord">
+    <!--@mbg.generated-->
+    <!--@Table file_storage_db.file_record-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="folder_id" jdbcType="BIGINT" property="folderId" />
+    <result column="origin_filename" jdbcType="VARCHAR" property="originFilename" />
+    <result column="storage_filename" jdbcType="VARCHAR" property="storageFilename" />
+    <result column="storage_path" jdbcType="VARCHAR" property="storagePath" />
+    <result column="file_md5" jdbcType="VARCHAR" property="fileMd5" />
+    <result column="file_size" jdbcType="BIGINT" property="fileSize" />
+    <result column="file_type" jdbcType="VARCHAR" property="fileType" />
+    <result column="file_suffix" jdbcType="VARCHAR" property="fileSuffix" />
+    <result column="is_public" jdbcType="TINYINT" property="isPublic" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="download_count" jdbcType="INTEGER" property="downloadCount" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, user_id, folder_id, origin_filename, storage_filename, storage_path, file_md5, 
+    file_size, file_type, file_suffix, is_public, `status`, download_count, create_time, 
+    update_time, delete_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from file_storage_db.file_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from file_storage_db.file_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.tyy.zxy.entity.FileRecord" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into file_storage_db.file_record (user_id, folder_id, origin_filename, 
+      storage_filename, storage_path, file_md5, 
+      file_size, file_type, file_suffix, 
+      is_public, `status`, download_count, 
+      create_time, update_time, delete_time
+      )
+    values (#{userId,jdbcType=BIGINT}, #{folderId,jdbcType=BIGINT}, #{originFilename,jdbcType=VARCHAR}, 
+      #{storageFilename,jdbcType=VARCHAR}, #{storagePath,jdbcType=VARCHAR}, #{fileMd5,jdbcType=VARCHAR}, 
+      #{fileSize,jdbcType=BIGINT}, #{fileType,jdbcType=VARCHAR}, #{fileSuffix,jdbcType=VARCHAR}, 
+      #{isPublic,jdbcType=TINYINT}, #{status,jdbcType=TINYINT}, #{downloadCount,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{deleteTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="org.tyy.zxy.entity.FileRecord" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into file_storage_db.file_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="folderId != null">
+        folder_id,
+      </if>
+      <if test="originFilename != null">
+        origin_filename,
+      </if>
+      <if test="storageFilename != null">
+        storage_filename,
+      </if>
+      <if test="storagePath != null">
+        storage_path,
+      </if>
+      <if test="fileMd5 != null">
+        file_md5,
+      </if>
+      <if test="fileSize != null">
+        file_size,
+      </if>
+      <if test="fileType != null">
+        file_type,
+      </if>
+      <if test="fileSuffix != null">
+        file_suffix,
+      </if>
+      <if test="isPublic != null">
+        is_public,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="downloadCount != null">
+        download_count,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="deleteTime != null">
+        delete_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="folderId != null">
+        #{folderId,jdbcType=BIGINT},
+      </if>
+      <if test="originFilename != null">
+        #{originFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="storageFilename != null">
+        #{storageFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="storagePath != null">
+        #{storagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="fileMd5 != null">
+        #{fileMd5,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSize != null">
+        #{fileSize,jdbcType=BIGINT},
+      </if>
+      <if test="fileType != null">
+        #{fileType,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSuffix != null">
+        #{fileSuffix,jdbcType=VARCHAR},
+      </if>
+      <if test="isPublic != null">
+        #{isPublic,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="downloadCount != null">
+        #{downloadCount,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteTime != null">
+        #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.tyy.zxy.entity.FileRecord">
+    <!--@mbg.generated-->
+    update file_storage_db.file_record
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="folderId != null">
+        folder_id = #{folderId,jdbcType=BIGINT},
+      </if>
+      <if test="originFilename != null">
+        origin_filename = #{originFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="storageFilename != null">
+        storage_filename = #{storageFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="storagePath != null">
+        storage_path = #{storagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="fileMd5 != null">
+        file_md5 = #{fileMd5,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSize != null">
+        file_size = #{fileSize,jdbcType=BIGINT},
+      </if>
+      <if test="fileType != null">
+        file_type = #{fileType,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSuffix != null">
+        file_suffix = #{fileSuffix,jdbcType=VARCHAR},
+      </if>
+      <if test="isPublic != null">
+        is_public = #{isPublic,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="downloadCount != null">
+        download_count = #{downloadCount,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteTime != null">
+        delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.tyy.zxy.entity.FileRecord">
+    <!--@mbg.generated-->
+    update file_storage_db.file_record
+    set user_id = #{userId,jdbcType=BIGINT},
+      folder_id = #{folderId,jdbcType=BIGINT},
+      origin_filename = #{originFilename,jdbcType=VARCHAR},
+      storage_filename = #{storageFilename,jdbcType=VARCHAR},
+      storage_path = #{storagePath,jdbcType=VARCHAR},
+      file_md5 = #{fileMd5,jdbcType=VARCHAR},
+      file_size = #{fileSize,jdbcType=BIGINT},
+      file_type = #{fileType,jdbcType=VARCHAR},
+      file_suffix = #{fileSuffix,jdbcType=VARCHAR},
+      is_public = #{isPublic,jdbcType=TINYINT},
+      `status` = #{status,jdbcType=TINYINT},
+      download_count = #{downloadCount,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      delete_time = #{deleteTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update file_storage_db.file_record
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="user_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.userId,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="folder_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.folderId,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="origin_filename = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.originFilename,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="storage_filename = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.storageFilename,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="storage_path = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.storagePath,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="file_md5 = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.fileMd5,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="file_size = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.fileSize,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="file_type = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.fileType,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="file_suffix = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.fileSuffix,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="is_public = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.isPublic,jdbcType=TINYINT}
+        </foreach>
+      </trim>
+      <trim prefix="`status` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.status,jdbcType=TINYINT}
+        </foreach>
+      </trim>
+      <trim prefix="download_count = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.downloadCount,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="create_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="update_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.updateTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="delete_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.deleteTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <update id="updateBatchSelective" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update file_storage_db.file_record
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="user_id = case" suffix="else user_id end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.userId != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.userId,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="folder_id = case" suffix="else folder_id end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.folderId != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.folderId,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="origin_filename = case" suffix="else origin_filename end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.originFilename != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.originFilename,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="storage_filename = case" suffix="else storage_filename end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.storageFilename != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.storageFilename,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="storage_path = case" suffix="else storage_path end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.storagePath != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.storagePath,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="file_md5 = case" suffix="else file_md5 end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.fileMd5 != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.fileMd5,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="file_size = case" suffix="else file_size end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.fileSize != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.fileSize,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="file_type = case" suffix="else file_type end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.fileType != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.fileType,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="file_suffix = case" suffix="else file_suffix end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.fileSuffix != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.fileSuffix,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="is_public = case" suffix="else is_public end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.isPublic != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.isPublic,jdbcType=TINYINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="`status` = case" suffix="else `status` end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.status != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.status,jdbcType=TINYINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="download_count = case" suffix="else download_count end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.downloadCount != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.downloadCount,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="create_time = case" suffix="else create_time end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.createTime != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="update_time = case" suffix="else update_time end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.updateTime != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.updateTime,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="delete_time = case" suffix="else delete_time end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.deleteTime != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.deleteTime,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into file_storage_db.file_record
+    (user_id, folder_id, origin_filename, storage_filename, storage_path, file_md5, file_size, 
+      file_type, file_suffix, is_public, `status`, download_count, create_time, update_time, 
+      delete_time)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.userId,jdbcType=BIGINT}, #{item.folderId,jdbcType=BIGINT}, #{item.originFilename,jdbcType=VARCHAR}, 
+        #{item.storageFilename,jdbcType=VARCHAR}, #{item.storagePath,jdbcType=VARCHAR}, 
+        #{item.fileMd5,jdbcType=VARCHAR}, #{item.fileSize,jdbcType=BIGINT}, #{item.fileType,jdbcType=VARCHAR}, 
+        #{item.fileSuffix,jdbcType=VARCHAR}, #{item.isPublic,jdbcType=TINYINT}, #{item.status,jdbcType=TINYINT}, 
+        #{item.downloadCount,jdbcType=INTEGER}, #{item.createTime,jdbcType=TIMESTAMP}, 
+        #{item.updateTime,jdbcType=TIMESTAMP}, #{item.deleteTime,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+  <insert id="batchInsertOrUpdate" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into file_storage_db.file_record
+    (user_id, folder_id, origin_filename, storage_filename, storage_path, file_md5, file_size, 
+      file_type, file_suffix, is_public, `status`, download_count, create_time, update_time, 
+      delete_time)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.userId,jdbcType=BIGINT}, #{item.folderId,jdbcType=BIGINT}, #{item.originFilename,jdbcType=VARCHAR}, 
+        #{item.storageFilename,jdbcType=VARCHAR}, #{item.storagePath,jdbcType=VARCHAR}, 
+        #{item.fileMd5,jdbcType=VARCHAR}, #{item.fileSize,jdbcType=BIGINT}, #{item.fileType,jdbcType=VARCHAR}, 
+        #{item.fileSuffix,jdbcType=VARCHAR}, #{item.isPublic,jdbcType=TINYINT}, #{item.status,jdbcType=TINYINT}, 
+        #{item.downloadCount,jdbcType=INTEGER}, #{item.createTime,jdbcType=TIMESTAMP}, 
+        #{item.updateTime,jdbcType=TIMESTAMP}, #{item.deleteTime,jdbcType=TIMESTAMP})
+    </foreach>
+    on duplicate key update 
+    user_id=values(user_id),
+    folder_id=values(folder_id),
+    origin_filename=values(origin_filename),
+    storage_filename=values(storage_filename),
+    storage_path=values(storage_path),
+    file_md5=values(file_md5),
+    file_size=values(file_size),
+    file_type=values(file_type),
+    file_suffix=values(file_suffix),
+    is_public=values(is_public),
+    `status`=values(`status`),
+    download_count=values(download_count),
+    create_time=values(create_time),
+    update_time=values(update_time),
+    delete_time=values(delete_time)
+  </insert>
+  <delete id="deleteByPrimaryKeyIn">
+    <!--@mbg.generated-->
+    delete from file_storage_db.file_record where id in 
+    <foreach close=")" collection="list" item="id" open="(" separator=", ">
+      #{id,jdbcType=BIGINT}
+    </foreach>
+  </delete>
+  <update id="updateBatchUseMultiQuery" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    <foreach collection="list" item="item" separator=";">
+      update file_storage_db.file_record
+      <set>
+        <if test="item.userId != null">
+          user_id = #{item.userId,jdbcType=BIGINT},
+        </if>
+        <if test="item.folderId != null">
+          folder_id = #{item.folderId,jdbcType=BIGINT},
+        </if>
+        <if test="item.originFilename != null">
+          origin_filename = #{item.originFilename,jdbcType=VARCHAR},
+        </if>
+        <if test="item.storageFilename != null">
+          storage_filename = #{item.storageFilename,jdbcType=VARCHAR},
+        </if>
+        <if test="item.storagePath != null">
+          storage_path = #{item.storagePath,jdbcType=VARCHAR},
+        </if>
+        <if test="item.fileMd5 != null">
+          file_md5 = #{item.fileMd5,jdbcType=VARCHAR},
+        </if>
+        <if test="item.fileSize != null">
+          file_size = #{item.fileSize,jdbcType=BIGINT},
+        </if>
+        <if test="item.fileType != null">
+          file_type = #{item.fileType,jdbcType=VARCHAR},
+        </if>
+        <if test="item.fileSuffix != null">
+          file_suffix = #{item.fileSuffix,jdbcType=VARCHAR},
+        </if>
+        <if test="item.isPublic != null">
+          is_public = #{item.isPublic,jdbcType=TINYINT},
+        </if>
+        <if test="item.status != null">
+          `status` = #{item.status,jdbcType=TINYINT},
+        </if>
+        <if test="item.downloadCount != null">
+          download_count = #{item.downloadCount,jdbcType=INTEGER},
+        </if>
+        <if test="item.createTime != null">
+          create_time = #{item.createTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="item.updateTime != null">
+          update_time = #{item.updateTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="item.deleteTime != null">
+          delete_time = #{item.deleteTime,jdbcType=TIMESTAMP},
+        </if>
+      </set>
+      where id = #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsertSelectiveUseDefaultForNull" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into file_storage_db.file_record
+    (user_id, folder_id, origin_filename, storage_filename, storage_path, file_md5, file_size, 
+      file_type, file_suffix, is_public, `status`, download_count, create_time, update_time, 
+      delete_time)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (
+      <choose>
+        <when test="item.userId != null">
+          #{item.userId,jdbcType=BIGINT},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.folderId != null">
+          #{item.folderId,jdbcType=BIGINT},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.originFilename != null">
+          #{item.originFilename,jdbcType=VARCHAR},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.storageFilename != null">
+          #{item.storageFilename,jdbcType=VARCHAR},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.storagePath != null">
+          #{item.storagePath,jdbcType=VARCHAR},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.fileMd5 != null">
+          #{item.fileMd5,jdbcType=VARCHAR},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.fileSize != null">
+          #{item.fileSize,jdbcType=BIGINT},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.fileType != null">
+          #{item.fileType,jdbcType=VARCHAR},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.fileSuffix != null">
+          #{item.fileSuffix,jdbcType=VARCHAR},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.isPublic != null">
+          #{item.isPublic,jdbcType=TINYINT},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.status != null">
+          #{item.status,jdbcType=TINYINT},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.downloadCount != null">
+          #{item.downloadCount,jdbcType=INTEGER},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.createTime != null">
+          #{item.createTime,jdbcType=TIMESTAMP},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.updateTime != null">
+          #{item.updateTime,jdbcType=TIMESTAMP},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.deleteTime != null">
+          #{item.deleteTime,jdbcType=TIMESTAMP}
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT
+        </otherwise>
+      </choose>
+      )
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="org.tyy.zxy.entity.FileRecord" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into file_storage_db.file_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      user_id,
+      folder_id,
+      origin_filename,
+      storage_filename,
+      storage_path,
+      file_md5,
+      file_size,
+      file_type,
+      file_suffix,
+      is_public,
+      `status`,
+      download_count,
+      create_time,
+      update_time,
+      delete_time,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      #{userId,jdbcType=BIGINT},
+      #{folderId,jdbcType=BIGINT},
+      #{originFilename,jdbcType=VARCHAR},
+      #{storageFilename,jdbcType=VARCHAR},
+      #{storagePath,jdbcType=VARCHAR},
+      #{fileMd5,jdbcType=VARCHAR},
+      #{fileSize,jdbcType=BIGINT},
+      #{fileType,jdbcType=VARCHAR},
+      #{fileSuffix,jdbcType=VARCHAR},
+      #{isPublic,jdbcType=TINYINT},
+      #{status,jdbcType=TINYINT},
+      #{downloadCount,jdbcType=INTEGER},
+      #{createTime,jdbcType=TIMESTAMP},
+      #{updateTime,jdbcType=TIMESTAMP},
+      #{deleteTime,jdbcType=TIMESTAMP},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      user_id = #{userId,jdbcType=BIGINT},
+      folder_id = #{folderId,jdbcType=BIGINT},
+      origin_filename = #{originFilename,jdbcType=VARCHAR},
+      storage_filename = #{storageFilename,jdbcType=VARCHAR},
+      storage_path = #{storagePath,jdbcType=VARCHAR},
+      file_md5 = #{fileMd5,jdbcType=VARCHAR},
+      file_size = #{fileSize,jdbcType=BIGINT},
+      file_type = #{fileType,jdbcType=VARCHAR},
+      file_suffix = #{fileSuffix,jdbcType=VARCHAR},
+      is_public = #{isPublic,jdbcType=TINYINT},
+      `status` = #{status,jdbcType=TINYINT},
+      download_count = #{downloadCount,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="org.tyy.zxy.entity.FileRecord" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into file_storage_db.file_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="folderId != null">
+        folder_id,
+      </if>
+      <if test="originFilename != null">
+        origin_filename,
+      </if>
+      <if test="storageFilename != null">
+        storage_filename,
+      </if>
+      <if test="storagePath != null">
+        storage_path,
+      </if>
+      <if test="fileMd5 != null">
+        file_md5,
+      </if>
+      <if test="fileSize != null">
+        file_size,
+      </if>
+      <if test="fileType != null">
+        file_type,
+      </if>
+      <if test="fileSuffix != null">
+        file_suffix,
+      </if>
+      <if test="isPublic != null">
+        is_public,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="downloadCount != null">
+        download_count,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="deleteTime != null">
+        delete_time,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="folderId != null">
+        #{folderId,jdbcType=BIGINT},
+      </if>
+      <if test="originFilename != null">
+        #{originFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="storageFilename != null">
+        #{storageFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="storagePath != null">
+        #{storagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="fileMd5 != null">
+        #{fileMd5,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSize != null">
+        #{fileSize,jdbcType=BIGINT},
+      </if>
+      <if test="fileType != null">
+        #{fileType,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSuffix != null">
+        #{fileSuffix,jdbcType=VARCHAR},
+      </if>
+      <if test="isPublic != null">
+        #{isPublic,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="downloadCount != null">
+        #{downloadCount,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteTime != null">
+        #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="folderId != null">
+        folder_id = #{folderId,jdbcType=BIGINT},
+      </if>
+      <if test="originFilename != null">
+        origin_filename = #{originFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="storageFilename != null">
+        storage_filename = #{storageFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="storagePath != null">
+        storage_path = #{storagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="fileMd5 != null">
+        file_md5 = #{fileMd5,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSize != null">
+        file_size = #{fileSize,jdbcType=BIGINT},
+      </if>
+      <if test="fileType != null">
+        file_type = #{fileType,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSuffix != null">
+        file_suffix = #{fileSuffix,jdbcType=VARCHAR},
+      </if>
+      <if test="isPublic != null">
+        is_public = #{isPublic,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="downloadCount != null">
+        download_count = #{downloadCount,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteTime != null">
+        delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

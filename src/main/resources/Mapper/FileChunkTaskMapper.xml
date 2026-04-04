@@ -1,0 +1,753 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.tyy.zxy.Mapper.FileChunkTaskMapper">
+  <resultMap id="BaseResultMap" type="org.tyy.zxy.entity.FileChunkTask">
+    <!--@mbg.generated-->
+    <!--@Table file_storage_db.file_chunk_task-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="task_id" jdbcType="VARCHAR" property="taskId" />
+    <result column="origin_filename" jdbcType="VARCHAR" property="originFilename" />
+    <result column="file_md5" jdbcType="VARCHAR" property="fileMd5" />
+    <result column="file_size" jdbcType="BIGINT" property="fileSize" />
+    <result column="chunk_size" jdbcType="INTEGER" property="chunkSize" />
+    <result column="total_chunk" jdbcType="INTEGER" property="totalChunk" />
+    <result column="uploaded_chunk" jdbcType="VARCHAR" property="uploadedChunk" />
+    <result column="folder_id" jdbcType="BIGINT" property="folderId" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="expire_time" jdbcType="TIMESTAMP" property="expireTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, user_id, task_id, origin_filename, file_md5, file_size, chunk_size, total_chunk, 
+    uploaded_chunk, folder_id, `status`, create_time, expire_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from file_storage_db.file_chunk_task
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from file_storage_db.file_chunk_task
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.tyy.zxy.entity.FileChunkTask" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into file_storage_db.file_chunk_task (user_id, task_id, origin_filename, 
+      file_md5, file_size, chunk_size, 
+      total_chunk, uploaded_chunk, folder_id, 
+      `status`, create_time, expire_time
+      )
+    values (#{userId,jdbcType=BIGINT}, #{taskId,jdbcType=VARCHAR}, #{originFilename,jdbcType=VARCHAR}, 
+      #{fileMd5,jdbcType=VARCHAR}, #{fileSize,jdbcType=BIGINT}, #{chunkSize,jdbcType=INTEGER}, 
+      #{totalChunk,jdbcType=INTEGER}, #{uploadedChunk,jdbcType=VARCHAR}, #{folderId,jdbcType=BIGINT}, 
+      #{status,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, #{expireTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="org.tyy.zxy.entity.FileChunkTask" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into file_storage_db.file_chunk_task
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="taskId != null">
+        task_id,
+      </if>
+      <if test="originFilename != null">
+        origin_filename,
+      </if>
+      <if test="fileMd5 != null">
+        file_md5,
+      </if>
+      <if test="fileSize != null">
+        file_size,
+      </if>
+      <if test="chunkSize != null">
+        chunk_size,
+      </if>
+      <if test="totalChunk != null">
+        total_chunk,
+      </if>
+      <if test="uploadedChunk != null">
+        uploaded_chunk,
+      </if>
+      <if test="folderId != null">
+        folder_id,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="expireTime != null">
+        expire_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="taskId != null">
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="originFilename != null">
+        #{originFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="fileMd5 != null">
+        #{fileMd5,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSize != null">
+        #{fileSize,jdbcType=BIGINT},
+      </if>
+      <if test="chunkSize != null">
+        #{chunkSize,jdbcType=INTEGER},
+      </if>
+      <if test="totalChunk != null">
+        #{totalChunk,jdbcType=INTEGER},
+      </if>
+      <if test="uploadedChunk != null">
+        #{uploadedChunk,jdbcType=VARCHAR},
+      </if>
+      <if test="folderId != null">
+        #{folderId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expireTime != null">
+        #{expireTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.tyy.zxy.entity.FileChunkTask">
+    <!--@mbg.generated-->
+    update file_storage_db.file_chunk_task
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="taskId != null">
+        task_id = #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="originFilename != null">
+        origin_filename = #{originFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="fileMd5 != null">
+        file_md5 = #{fileMd5,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSize != null">
+        file_size = #{fileSize,jdbcType=BIGINT},
+      </if>
+      <if test="chunkSize != null">
+        chunk_size = #{chunkSize,jdbcType=INTEGER},
+      </if>
+      <if test="totalChunk != null">
+        total_chunk = #{totalChunk,jdbcType=INTEGER},
+      </if>
+      <if test="uploadedChunk != null">
+        uploaded_chunk = #{uploadedChunk,jdbcType=VARCHAR},
+      </if>
+      <if test="folderId != null">
+        folder_id = #{folderId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expireTime != null">
+        expire_time = #{expireTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.tyy.zxy.entity.FileChunkTask">
+    <!--@mbg.generated-->
+    update file_storage_db.file_chunk_task
+    set user_id = #{userId,jdbcType=BIGINT},
+      task_id = #{taskId,jdbcType=VARCHAR},
+      origin_filename = #{originFilename,jdbcType=VARCHAR},
+      file_md5 = #{fileMd5,jdbcType=VARCHAR},
+      file_size = #{fileSize,jdbcType=BIGINT},
+      chunk_size = #{chunkSize,jdbcType=INTEGER},
+      total_chunk = #{totalChunk,jdbcType=INTEGER},
+      uploaded_chunk = #{uploadedChunk,jdbcType=VARCHAR},
+      folder_id = #{folderId,jdbcType=BIGINT},
+      `status` = #{status,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      expire_time = #{expireTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update file_storage_db.file_chunk_task
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="user_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.userId,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="task_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.taskId,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="origin_filename = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.originFilename,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="file_md5 = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.fileMd5,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="file_size = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.fileSize,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="chunk_size = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.chunkSize,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="total_chunk = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.totalChunk,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="uploaded_chunk = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.uploadedChunk,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="folder_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.folderId,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="`status` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.status,jdbcType=TINYINT}
+        </foreach>
+      </trim>
+      <trim prefix="create_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="expire_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.expireTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <update id="updateBatchSelective" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update file_storage_db.file_chunk_task
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="user_id = case" suffix="else user_id end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.userId != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.userId,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="task_id = case" suffix="else task_id end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.taskId != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.taskId,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="origin_filename = case" suffix="else origin_filename end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.originFilename != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.originFilename,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="file_md5 = case" suffix="else file_md5 end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.fileMd5 != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.fileMd5,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="file_size = case" suffix="else file_size end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.fileSize != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.fileSize,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="chunk_size = case" suffix="else chunk_size end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.chunkSize != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.chunkSize,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="total_chunk = case" suffix="else total_chunk end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.totalChunk != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.totalChunk,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="uploaded_chunk = case" suffix="else uploaded_chunk end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.uploadedChunk != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.uploadedChunk,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="folder_id = case" suffix="else folder_id end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.folderId != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.folderId,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="`status` = case" suffix="else `status` end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.status != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.status,jdbcType=TINYINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="create_time = case" suffix="else create_time end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.createTime != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="expire_time = case" suffix="else expire_time end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.expireTime != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.expireTime,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into file_storage_db.file_chunk_task
+    (user_id, task_id, origin_filename, file_md5, file_size, chunk_size, total_chunk, 
+      uploaded_chunk, folder_id, `status`, create_time, expire_time)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.userId,jdbcType=BIGINT}, #{item.taskId,jdbcType=VARCHAR}, #{item.originFilename,jdbcType=VARCHAR}, 
+        #{item.fileMd5,jdbcType=VARCHAR}, #{item.fileSize,jdbcType=BIGINT}, #{item.chunkSize,jdbcType=INTEGER}, 
+        #{item.totalChunk,jdbcType=INTEGER}, #{item.uploadedChunk,jdbcType=VARCHAR}, #{item.folderId,jdbcType=BIGINT}, 
+        #{item.status,jdbcType=TINYINT}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.expireTime,jdbcType=TIMESTAMP}
+        )
+    </foreach>
+  </insert>
+  <insert id="batchInsertOrUpdate" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into file_storage_db.file_chunk_task
+    (user_id, task_id, origin_filename, file_md5, file_size, chunk_size, total_chunk, 
+      uploaded_chunk, folder_id, `status`, create_time, expire_time)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.userId,jdbcType=BIGINT}, #{item.taskId,jdbcType=VARCHAR}, #{item.originFilename,jdbcType=VARCHAR}, 
+        #{item.fileMd5,jdbcType=VARCHAR}, #{item.fileSize,jdbcType=BIGINT}, #{item.chunkSize,jdbcType=INTEGER}, 
+        #{item.totalChunk,jdbcType=INTEGER}, #{item.uploadedChunk,jdbcType=VARCHAR}, #{item.folderId,jdbcType=BIGINT}, 
+        #{item.status,jdbcType=TINYINT}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.expireTime,jdbcType=TIMESTAMP}
+        )
+    </foreach>
+    on duplicate key update 
+    user_id=values(user_id),
+    task_id=values(task_id),
+    origin_filename=values(origin_filename),
+    file_md5=values(file_md5),
+    file_size=values(file_size),
+    chunk_size=values(chunk_size),
+    total_chunk=values(total_chunk),
+    uploaded_chunk=values(uploaded_chunk),
+    folder_id=values(folder_id),
+    `status`=values(`status`),
+    create_time=values(create_time),
+    expire_time=values(expire_time)
+  </insert>
+  <delete id="deleteByPrimaryKeyIn">
+    <!--@mbg.generated-->
+    delete from file_storage_db.file_chunk_task where id in 
+    <foreach close=")" collection="list" item="id" open="(" separator=", ">
+      #{id,jdbcType=BIGINT}
+    </foreach>
+  </delete>
+  <update id="updateBatchUseMultiQuery" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    <foreach collection="list" item="item" separator=";">
+      update file_storage_db.file_chunk_task
+      <set>
+        <if test="item.userId != null">
+          user_id = #{item.userId,jdbcType=BIGINT},
+        </if>
+        <if test="item.taskId != null">
+          task_id = #{item.taskId,jdbcType=VARCHAR},
+        </if>
+        <if test="item.originFilename != null">
+          origin_filename = #{item.originFilename,jdbcType=VARCHAR},
+        </if>
+        <if test="item.fileMd5 != null">
+          file_md5 = #{item.fileMd5,jdbcType=VARCHAR},
+        </if>
+        <if test="item.fileSize != null">
+          file_size = #{item.fileSize,jdbcType=BIGINT},
+        </if>
+        <if test="item.chunkSize != null">
+          chunk_size = #{item.chunkSize,jdbcType=INTEGER},
+        </if>
+        <if test="item.totalChunk != null">
+          total_chunk = #{item.totalChunk,jdbcType=INTEGER},
+        </if>
+        <if test="item.uploadedChunk != null">
+          uploaded_chunk = #{item.uploadedChunk,jdbcType=VARCHAR},
+        </if>
+        <if test="item.folderId != null">
+          folder_id = #{item.folderId,jdbcType=BIGINT},
+        </if>
+        <if test="item.status != null">
+          `status` = #{item.status,jdbcType=TINYINT},
+        </if>
+        <if test="item.createTime != null">
+          create_time = #{item.createTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="item.expireTime != null">
+          expire_time = #{item.expireTime,jdbcType=TIMESTAMP},
+        </if>
+      </set>
+      where id = #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsertSelectiveUseDefaultForNull" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into file_storage_db.file_chunk_task
+    (user_id, task_id, origin_filename, file_md5, file_size, chunk_size, total_chunk, 
+      uploaded_chunk, folder_id, `status`, create_time, expire_time)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (
+      <choose>
+        <when test="item.userId != null">
+          #{item.userId,jdbcType=BIGINT},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.taskId != null">
+          #{item.taskId,jdbcType=VARCHAR},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.originFilename != null">
+          #{item.originFilename,jdbcType=VARCHAR},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.fileMd5 != null">
+          #{item.fileMd5,jdbcType=VARCHAR},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.fileSize != null">
+          #{item.fileSize,jdbcType=BIGINT},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.chunkSize != null">
+          #{item.chunkSize,jdbcType=INTEGER},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.totalChunk != null">
+          #{item.totalChunk,jdbcType=INTEGER},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.uploadedChunk != null">
+          #{item.uploadedChunk,jdbcType=VARCHAR},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.folderId != null">
+          #{item.folderId,jdbcType=BIGINT},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.status != null">
+          #{item.status,jdbcType=TINYINT},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.createTime != null">
+          #{item.createTime,jdbcType=TIMESTAMP},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.expireTime != null">
+          #{item.expireTime,jdbcType=TIMESTAMP}
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT
+        </otherwise>
+      </choose>
+      )
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="org.tyy.zxy.entity.FileChunkTask" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into file_storage_db.file_chunk_task
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      user_id,
+      task_id,
+      origin_filename,
+      file_md5,
+      file_size,
+      chunk_size,
+      total_chunk,
+      uploaded_chunk,
+      folder_id,
+      `status`,
+      create_time,
+      expire_time,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      #{userId,jdbcType=BIGINT},
+      #{taskId,jdbcType=VARCHAR},
+      #{originFilename,jdbcType=VARCHAR},
+      #{fileMd5,jdbcType=VARCHAR},
+      #{fileSize,jdbcType=BIGINT},
+      #{chunkSize,jdbcType=INTEGER},
+      #{totalChunk,jdbcType=INTEGER},
+      #{uploadedChunk,jdbcType=VARCHAR},
+      #{folderId,jdbcType=BIGINT},
+      #{status,jdbcType=TINYINT},
+      #{createTime,jdbcType=TIMESTAMP},
+      #{expireTime,jdbcType=TIMESTAMP},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      user_id = #{userId,jdbcType=BIGINT},
+      task_id = #{taskId,jdbcType=VARCHAR},
+      origin_filename = #{originFilename,jdbcType=VARCHAR},
+      file_md5 = #{fileMd5,jdbcType=VARCHAR},
+      file_size = #{fileSize,jdbcType=BIGINT},
+      chunk_size = #{chunkSize,jdbcType=INTEGER},
+      total_chunk = #{totalChunk,jdbcType=INTEGER},
+      uploaded_chunk = #{uploadedChunk,jdbcType=VARCHAR},
+      folder_id = #{folderId,jdbcType=BIGINT},
+      `status` = #{status,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      expire_time = #{expireTime,jdbcType=TIMESTAMP},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="org.tyy.zxy.entity.FileChunkTask" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into file_storage_db.file_chunk_task
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="taskId != null">
+        task_id,
+      </if>
+      <if test="originFilename != null">
+        origin_filename,
+      </if>
+      <if test="fileMd5 != null">
+        file_md5,
+      </if>
+      <if test="fileSize != null">
+        file_size,
+      </if>
+      <if test="chunkSize != null">
+        chunk_size,
+      </if>
+      <if test="totalChunk != null">
+        total_chunk,
+      </if>
+      <if test="uploadedChunk != null">
+        uploaded_chunk,
+      </if>
+      <if test="folderId != null">
+        folder_id,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="expireTime != null">
+        expire_time,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="taskId != null">
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="originFilename != null">
+        #{originFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="fileMd5 != null">
+        #{fileMd5,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSize != null">
+        #{fileSize,jdbcType=BIGINT},
+      </if>
+      <if test="chunkSize != null">
+        #{chunkSize,jdbcType=INTEGER},
+      </if>
+      <if test="totalChunk != null">
+        #{totalChunk,jdbcType=INTEGER},
+      </if>
+      <if test="uploadedChunk != null">
+        #{uploadedChunk,jdbcType=VARCHAR},
+      </if>
+      <if test="folderId != null">
+        #{folderId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expireTime != null">
+        #{expireTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="taskId != null">
+        task_id = #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="originFilename != null">
+        origin_filename = #{originFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="fileMd5 != null">
+        file_md5 = #{fileMd5,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSize != null">
+        file_size = #{fileSize,jdbcType=BIGINT},
+      </if>
+      <if test="chunkSize != null">
+        chunk_size = #{chunkSize,jdbcType=INTEGER},
+      </if>
+      <if test="totalChunk != null">
+        total_chunk = #{totalChunk,jdbcType=INTEGER},
+      </if>
+      <if test="uploadedChunk != null">
+        uploaded_chunk = #{uploadedChunk,jdbcType=VARCHAR},
+      </if>
+      <if test="folderId != null">
+        folder_id = #{folderId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expireTime != null">
+        expire_time = #{expireTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

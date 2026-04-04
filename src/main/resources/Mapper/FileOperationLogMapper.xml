@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.tyy.zxy.Mapper.FileOperationLogMapper">
+  <resultMap id="BaseResultMap" type="org.tyy.zxy.entity.FileOperationLog">
+    <!--@mbg.generated-->
+    <!--@Table file_storage_db.file_operation_log-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="file_id" jdbcType="BIGINT" property="fileId" />
+    <result column="folder_id" jdbcType="BIGINT" property="folderId" />
+    <result column="operation_type" jdbcType="VARCHAR" property="operationType" />
+    <result column="operation_detail" jdbcType="VARCHAR" property="operationDetail" />
+    <result column="operation_ip" jdbcType="VARCHAR" property="operationIp" />
+    <result column="operation_time" jdbcType="TIMESTAMP" property="operationTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, user_id, file_id, folder_id, operation_type, operation_detail, operation_ip, 
+    operation_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from file_storage_db.file_operation_log
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from file_storage_db.file_operation_log
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.tyy.zxy.entity.FileOperationLog" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into file_storage_db.file_operation_log (user_id, file_id, folder_id, 
+      operation_type, operation_detail, operation_ip, 
+      operation_time)
+    values (#{userId,jdbcType=BIGINT}, #{fileId,jdbcType=BIGINT}, #{folderId,jdbcType=BIGINT}, 
+      #{operationType,jdbcType=VARCHAR}, #{operationDetail,jdbcType=VARCHAR}, #{operationIp,jdbcType=VARCHAR}, 
+      #{operationTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="org.tyy.zxy.entity.FileOperationLog" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into file_storage_db.file_operation_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="fileId != null">
+        file_id,
+      </if>
+      <if test="folderId != null">
+        folder_id,
+      </if>
+      <if test="operationType != null">
+        operation_type,
+      </if>
+      <if test="operationDetail != null">
+        operation_detail,
+      </if>
+      <if test="operationIp != null">
+        operation_ip,
+      </if>
+      <if test="operationTime != null">
+        operation_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="fileId != null">
+        #{fileId,jdbcType=BIGINT},
+      </if>
+      <if test="folderId != null">
+        #{folderId,jdbcType=BIGINT},
+      </if>
+      <if test="operationType != null">
+        #{operationType,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDetail != null">
+        #{operationDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="operationIp != null">
+        #{operationIp,jdbcType=VARCHAR},
+      </if>
+      <if test="operationTime != null">
+        #{operationTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.tyy.zxy.entity.FileOperationLog">
+    <!--@mbg.generated-->
+    update file_storage_db.file_operation_log
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="fileId != null">
+        file_id = #{fileId,jdbcType=BIGINT},
+      </if>
+      <if test="folderId != null">
+        folder_id = #{folderId,jdbcType=BIGINT},
+      </if>
+      <if test="operationType != null">
+        operation_type = #{operationType,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDetail != null">
+        operation_detail = #{operationDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="operationIp != null">
+        operation_ip = #{operationIp,jdbcType=VARCHAR},
+      </if>
+      <if test="operationTime != null">
+        operation_time = #{operationTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.tyy.zxy.entity.FileOperationLog">
+    <!--@mbg.generated-->
+    update file_storage_db.file_operation_log
+    set user_id = #{userId,jdbcType=BIGINT},
+      file_id = #{fileId,jdbcType=BIGINT},
+      folder_id = #{folderId,jdbcType=BIGINT},
+      operation_type = #{operationType,jdbcType=VARCHAR},
+      operation_detail = #{operationDetail,jdbcType=VARCHAR},
+      operation_ip = #{operationIp,jdbcType=VARCHAR},
+      operation_time = #{operationTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update file_storage_db.file_operation_log
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="user_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.userId,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="file_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.fileId,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="folder_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.folderId,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="operation_type = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.operationType,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="operation_detail = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.operationDetail,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="operation_ip = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.operationIp,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="operation_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.operationTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <update id="updateBatchSelective" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update file_storage_db.file_operation_log
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="user_id = case" suffix="else user_id end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.userId != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.userId,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="file_id = case" suffix="else file_id end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.fileId != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.fileId,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="folder_id = case" suffix="else folder_id end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.folderId != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.folderId,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="operation_type = case" suffix="else operation_type end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.operationType != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.operationType,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="operation_detail = case" suffix="else operation_detail end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.operationDetail != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.operationDetail,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="operation_ip = case" suffix="else operation_ip end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.operationIp != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.operationIp,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="operation_time = case" suffix="else operation_time end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.operationTime != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.operationTime,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into file_storage_db.file_operation_log
+    (user_id, file_id, folder_id, operation_type, operation_detail, operation_ip, operation_time
+      )
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.userId,jdbcType=BIGINT}, #{item.fileId,jdbcType=BIGINT}, #{item.folderId,jdbcType=BIGINT}, 
+        #{item.operationType,jdbcType=VARCHAR}, #{item.operationDetail,jdbcType=VARCHAR}, 
+        #{item.operationIp,jdbcType=VARCHAR}, #{item.operationTime,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+  <insert id="batchInsertOrUpdate" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into file_storage_db.file_operation_log
+    (user_id, file_id, folder_id, operation_type, operation_detail, operation_ip, operation_time
+      )
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.userId,jdbcType=BIGINT}, #{item.fileId,jdbcType=BIGINT}, #{item.folderId,jdbcType=BIGINT}, 
+        #{item.operationType,jdbcType=VARCHAR}, #{item.operationDetail,jdbcType=VARCHAR}, 
+        #{item.operationIp,jdbcType=VARCHAR}, #{item.operationTime,jdbcType=TIMESTAMP})
+    </foreach>
+    on duplicate key update 
+    user_id=values(user_id),
+    file_id=values(file_id),
+    folder_id=values(folder_id),
+    operation_type=values(operation_type),
+    operation_detail=values(operation_detail),
+    operation_ip=values(operation_ip),
+    operation_time=values(operation_time)
+  </insert>
+  <delete id="deleteByPrimaryKeyIn">
+    <!--@mbg.generated-->
+    delete from file_storage_db.file_operation_log where id in 
+    <foreach close=")" collection="list" item="id" open="(" separator=", ">
+      #{id,jdbcType=BIGINT}
+    </foreach>
+  </delete>
+  <update id="updateBatchUseMultiQuery" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    <foreach collection="list" item="item" separator=";">
+      update file_storage_db.file_operation_log
+      <set>
+        <if test="item.userId != null">
+          user_id = #{item.userId,jdbcType=BIGINT},
+        </if>
+        <if test="item.fileId != null">
+          file_id = #{item.fileId,jdbcType=BIGINT},
+        </if>
+        <if test="item.folderId != null">
+          folder_id = #{item.folderId,jdbcType=BIGINT},
+        </if>
+        <if test="item.operationType != null">
+          operation_type = #{item.operationType,jdbcType=VARCHAR},
+        </if>
+        <if test="item.operationDetail != null">
+          operation_detail = #{item.operationDetail,jdbcType=VARCHAR},
+        </if>
+        <if test="item.operationIp != null">
+          operation_ip = #{item.operationIp,jdbcType=VARCHAR},
+        </if>
+        <if test="item.operationTime != null">
+          operation_time = #{item.operationTime,jdbcType=TIMESTAMP},
+        </if>
+      </set>
+      where id = #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsertSelectiveUseDefaultForNull" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into file_storage_db.file_operation_log
+    (user_id, file_id, folder_id, operation_type, operation_detail, operation_ip, operation_time
+      )
+    values
+    <foreach collection="list" item="item" separator=",">
+      (
+      <choose>
+        <when test="item.userId != null">
+          #{item.userId,jdbcType=BIGINT},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.fileId != null">
+          #{item.fileId,jdbcType=BIGINT},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.folderId != null">
+          #{item.folderId,jdbcType=BIGINT},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.operationType != null">
+          #{item.operationType,jdbcType=VARCHAR},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.operationDetail != null">
+          #{item.operationDetail,jdbcType=VARCHAR},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.operationIp != null">
+          #{item.operationIp,jdbcType=VARCHAR},
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT,
+        </otherwise>
+      </choose>
+      <choose>
+        <when test="item.operationTime != null">
+          #{item.operationTime,jdbcType=TIMESTAMP}
+        </when>
+        <!--@ignoreSql-->
+        <otherwise>
+          DEFAULT
+        </otherwise>
+      </choose>
+      )
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="org.tyy.zxy.entity.FileOperationLog" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into file_storage_db.file_operation_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      user_id,
+      file_id,
+      folder_id,
+      operation_type,
+      operation_detail,
+      operation_ip,
+      operation_time,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      #{userId,jdbcType=BIGINT},
+      #{fileId,jdbcType=BIGINT},
+      #{folderId,jdbcType=BIGINT},
+      #{operationType,jdbcType=VARCHAR},
+      #{operationDetail,jdbcType=VARCHAR},
+      #{operationIp,jdbcType=VARCHAR},
+      #{operationTime,jdbcType=TIMESTAMP},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      user_id = #{userId,jdbcType=BIGINT},
+      file_id = #{fileId,jdbcType=BIGINT},
+      folder_id = #{folderId,jdbcType=BIGINT},
+      operation_type = #{operationType,jdbcType=VARCHAR},
+      operation_detail = #{operationDetail,jdbcType=VARCHAR},
+      operation_ip = #{operationIp,jdbcType=VARCHAR},
+      operation_time = #{operationTime,jdbcType=TIMESTAMP},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="org.tyy.zxy.entity.FileOperationLog" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into file_storage_db.file_operation_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="fileId != null">
+        file_id,
+      </if>
+      <if test="folderId != null">
+        folder_id,
+      </if>
+      <if test="operationType != null">
+        operation_type,
+      </if>
+      <if test="operationDetail != null">
+        operation_detail,
+      </if>
+      <if test="operationIp != null">
+        operation_ip,
+      </if>
+      <if test="operationTime != null">
+        operation_time,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="fileId != null">
+        #{fileId,jdbcType=BIGINT},
+      </if>
+      <if test="folderId != null">
+        #{folderId,jdbcType=BIGINT},
+      </if>
+      <if test="operationType != null">
+        #{operationType,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDetail != null">
+        #{operationDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="operationIp != null">
+        #{operationIp,jdbcType=VARCHAR},
+      </if>
+      <if test="operationTime != null">
+        #{operationTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="fileId != null">
+        file_id = #{fileId,jdbcType=BIGINT},
+      </if>
+      <if test="folderId != null">
+        folder_id = #{folderId,jdbcType=BIGINT},
+      </if>
+      <if test="operationType != null">
+        operation_type = #{operationType,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDetail != null">
+        operation_detail = #{operationDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="operationIp != null">
+        operation_ip = #{operationIp,jdbcType=VARCHAR},
+      </if>
+      <if test="operationTime != null">
+        operation_time = #{operationTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>
