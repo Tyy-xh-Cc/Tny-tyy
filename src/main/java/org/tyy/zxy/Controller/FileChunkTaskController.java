@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 * @author xxxxx
 */
 @RestController
-@RequestMapping("/file_storage_db.file_chunk_task")
+@RequestMapping("/api/file_storage_db.file_chunk_task")
 public class FileChunkTaskController {
 /**
 * 服务对象

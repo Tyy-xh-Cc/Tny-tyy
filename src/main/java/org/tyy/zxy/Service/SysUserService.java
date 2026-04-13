@@ -13,7 +13,13 @@ public class SysUserService{
     @Autowired
     private SysUserMapper sysUserMapper;
 
-    
+    public SysUser login(String name,String password){
+        SysUser user=sysUserMapper.selectByUsername(name);
+        if(user==null){
+            return null;
+        }
+        return user.getPassword().equals(password)?user:null;
+    }
     public int deleteByPrimaryKey(Long id) {
         return sysUserMapper.deleteByPrimaryKey(id);
     }
@@ -83,7 +89,6 @@ public class SysUserService{
         return sysUserMapper.batchInsertSelectiveUseDefaultForNull(list);
     }
 
-    
     public int batchInsertOrUpdate(List<SysUser> list) {
         return sysUserMapper.batchInsertOrUpdate(list);
     }

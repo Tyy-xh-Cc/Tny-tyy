@@ -45,6 +45,7 @@ public interface SysUserMapper extends BaseMapper<SysUser> {
      * @return object by primary key
      */
     SysUser selectByPrimaryKey(Long id);
+    SysUser selectByUsername(String username);
 
     /**
      * update record selective
