@@ -25,7 +25,6 @@ public class JwtInterceptor implements HandlerInterceptor {
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             response.setStatus(401);
             response.setContentType("application/json;charset=UTF-8");
-            response.getWriter().write("{\"code\":401,\"message\":\"缺少 Token\"}");
             return false;
         }
         String token = authHeader.substring(7);
@@ -37,7 +36,6 @@ public class JwtInterceptor implements HandlerInterceptor {
         } catch (RuntimeException e) {
             response.setStatus(401);
             response.setContentType("application/json;charset=UTF-8");
-            response.getWriter().write("{\"code\":401,\"message\":\"" + e.getMessage() + "\"}");
             return false;
         }
     }

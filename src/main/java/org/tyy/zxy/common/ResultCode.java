@@ -10,10 +10,6 @@ public enum ResultCode {
     UNAUTHORIZED(401, "未登录"),
     FORBIDDEN(403, "权限不足"),
     NOT_FOUND(404, "资源不存在"),
-    FILE_NOT_EXIST(4001, "文件不存在"),
-    USER_NOT_EXIST(4002, "用户不存在"),
-    PASSWORD_ERROR(4003, "密码错误"),
-    STORAGE_NOT_ENOUGH(4004, "存储空间不足"),
     ;
 
     private final Integer code;
